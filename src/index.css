@@ -1,11 +1,27 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.item {
+    width: 200px;
+    padding: 0;
+    margin: 0;
+}
+
 #cy {
-    width: 50%;
-    height: 50%;
-    position: absolute;
+    width: 500px;
+    height: 500px;
     top: 0px;
     left: 0px;
+
 
     border-width: 5px;
     border-color:red;
     border-style: solid;
+}
+
+input {
+    padding-left: 500px;
 }

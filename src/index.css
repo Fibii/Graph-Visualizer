@@ -1,0 +1,11 @@
+#cy {
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    border-width: 5px;
+    border-color:red;
+    border-style: solid;
+}

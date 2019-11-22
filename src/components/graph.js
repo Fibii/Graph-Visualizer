@@ -18,8 +18,6 @@ const nodes = [
 const Graph = () => {
 
   const [elements, setElements] = useState(nodes)
-  const [nodeTitle, setNodeTitle] = useState('')
-
 
   const addNode = (title) => {
 
@@ -37,12 +35,13 @@ const Graph = () => {
   }
 
 
-  const handleNodeTitleInputChange = (event) => {
-    setNodeTitle(event.target.value)
+  const handleAddNewNode = (event) => {
+    event.preventDefault()
+    const title = event.target.nodeTitle.value
+    addNode(title)
   }
 
 
-  console.log(elements)
   return (
       <div className='container'>
 
@@ -51,8 +50,12 @@ const Graph = () => {
         </div>
 
         <div className='item'>
-          <input type='text' onChange={handleNodeTitleInputChange} className='item'></input>
-          <button onClick={() => addNode(nodeTitle)} className='item'>Add</button>
+
+          <form onSubmit={handleAddNewNode}>
+            <input type='text' name='nodeTitle' className='item'></input>
+            <button className='item'>Add</button>
+          </form>
+
         </div>
       </div>
   )

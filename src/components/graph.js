@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import GraphScene from './graphScene'
+import NodeForm from './nodeForm'
 
 const nodes = [
   {
@@ -32,6 +33,7 @@ const Graph = () => {
     }
 
     const lines = content.split('\n')
+    
 
     if (withWeights) {
 
@@ -130,21 +132,16 @@ const Graph = () => {
 
   }
 
+  const handleClearButton = () => setElements([])
+  const handleWithWeights = () => setWithWeights(!withWeights)
 
   return (
       <div className='container'>
-
         <GraphScene elements={elements}/>
-
-        <div className='item'>
-
-          <form onSubmit={handleAddNewNode}>
-            <textarea name='nodes' className='item'></textarea>
-            with weights<input type='checkbox' onChange={() => setWithWeights(!withWeights)}></input>
-            <button className='item'>Add</button>
-          </form>
-          <button onClick={() => setElements([])}>clear</button>
-        </div>
+        <NodeForm handleAddNewNode={handleAddNewNode}
+                  handleClearButton={handleClearButton}
+                  handleWithWeights={handleWithWeights}
+        />
       </div>
   )
 

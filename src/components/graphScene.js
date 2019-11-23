@@ -25,8 +25,8 @@ const GraphScene = ({elements}) => {
       {
         selector: 'edge',
         style: {
+          'content': 'data(weight)',
           'width': 3,
-          'length': 10,
           'line-color': '#ccc',
           'target-arrow-color': '#ccc',
           'target-arrow-shape': 'triangle'

@@ -12,16 +12,16 @@ describe('input parsing functions', () => {
   })
 
   test('correct input can be parsed', () => {
-    expect(isInputParsable('A B 5')).toBe(true)
-    expect(isInputParsable('A B 5\nA C 4')).toBe(true)
+    expect(isInputParsable('A B 5', true)).toBe(true)
+    expect(isInputParsable('A B 5\nA C 4', true)).toBe(true)
     expect(isInputParsable('A B ')).toBe(true)
-    expect(isInputParsable('A B 1 ')).toBe(true)
+    expect(isInputParsable('A B 1 ', true)).toBe(true)
   })
 
   test('wrong input cannot be parsed', () => {
     expect(isInputParsable(' ')).toBe(false)
-    expect(isInputParsable('A B C')).toBe(false)
-    expect(isInputParsable('A B 5\nA C D')).toBe(false)
+    expect(isInputParsable('A B C', true)).toBe(false)
+    expect(isInputParsable('A B 5\nA C D', true)).toBe(false)
   })
 })
 
@@ -270,6 +270,12 @@ describe('input to object list function fails', () => {
 
   test('getNodeToAdd with one line and with weights fails', () => {
     const basicInput = 'A C K'
+    const nodesToAdd = getNodesToAddList(basicInput, true)
+    expect(nodesToAdd).toEqual('input error')
+  })
+
+  test('getNodeToAdd with one line with 2 with weights fails', () => {
+    const basicInput = 'A C'
     const nodesToAdd = getNodesToAddList(basicInput, true)
     expect(nodesToAdd).toEqual('input error')
   })

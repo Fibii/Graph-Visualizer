@@ -1,15 +1,25 @@
 export const isNumber = (number) => number % 1 === 0
 
-export const isInputParsable = (lines) => {
+export const isInputParsable = (lines, withWeights = false) => {
   let parsable = true
 
   lines.split('\n').forEach((line) => {
     const splitedLine = line.trim().split(' ')
 
+
     // each line must have length 2 or 3
     if (splitedLine.length < 2 || splitedLine.length > 3) {
       parsable = false
     }
+
+    if (withWeights && splitedLine.length !== 3) {
+      parsable = false
+    }
+
+    if (!withWeights && splitedLine.length !== 2) {
+      parsable = false
+    }
+
 
     if (splitedLine[0].length < 1 || splitedLine[1].length < 1) {
       parsable = false
@@ -30,7 +40,7 @@ export const isInputParsable = (lines) => {
      * third input: weight
      * */
 const getNodesToAddList = (content, withWeights = false) => {
-  if (content.length === 0 || !isInputParsable(content)) {
+  if (content.length === 0 || !isInputParsable(content, withWeights)) {
     return 'input error'
   }
 

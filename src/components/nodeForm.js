@@ -2,14 +2,18 @@ import React from 'react'
 
 
 const NodeForm = ({ handleAddNewNode, handleClearButton, handleWithWeights }) => (
-  <div className="item">
+  <div className="itemContainer">
     <form onSubmit={handleAddNewNode}>
-      <textarea name="nodes" className="item" />
-            with weights
-      <input type="checkbox" onChange={handleWithWeights} />
-      <input type="submit" className="item" value="Add" />
+      <textarea name="nodes" className="item" id="textArea" rows="16" />
+
+      <div id="inputItem">
+        with weights 
+        <input type="checkbox" onChange={handleWithWeights} />
+      </div>
+
+      <button type="submit" className="item">Add</button>
     </form>
-    <button type="button" onClick={handleClearButton}>clear</button>
+    <button type="button" onClick={handleClearButton} className="item">clear</button>
   </div>
 )
 

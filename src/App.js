@@ -6,7 +6,6 @@ import Graph from './components/graph'
 
 const App = () => (
   <div>
-    <h1>hello</h1>
     <Graph />
   </div>
 )

@@ -21,6 +21,10 @@ body {
     justify-content: left;
 }
 
+.container  > select {
+    height: 80px;
+}
+
 .itemContainer {
     background-color:rgb(108, 65, 158);
     right: 0;

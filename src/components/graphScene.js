@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import cytoscape from 'cytoscape'
 
-const GraphScene = ({ elements }) => {
+const GraphScene = ({ elements, layout }) => {
   const containerRef = useRef(null)
   const [cy, setCy] = useState(null)
 
@@ -37,6 +37,10 @@ const GraphScene = ({ elements }) => {
       },
 
     })
+
+    if (layout !== null) {
+      cy.layout(layout).run()
+    }
 
     setCy(cy)
   }, [elements])

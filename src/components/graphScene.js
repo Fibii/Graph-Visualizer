@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import cytoscape from 'cytoscape'
 
 const GraphScene = ({ elements }) => {
   const containerRef = useRef(null)
+  const [cy, setCy] = useState(null)
 
   useEffect(() => {
     const cy = cytoscape({
@@ -36,7 +37,9 @@ const GraphScene = ({ elements }) => {
       },
 
     })
-  })
+
+    setCy(cy)
+  }, [elements])
 
 
   return (

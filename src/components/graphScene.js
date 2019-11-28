@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react'
 import cytoscape from 'cytoscape'
+import LayoutList from './layoutList'
+import getLayout from '../utils/graphLayouts'
 
-const GraphScene = ({ elements, layout }) => {
+
+const GraphScene = ({ elements }) => {
   const containerRef = useRef(null)
   const [cy, setCy] = useState(null)
+  const [layout, setLayout] = useState(null)
 
   useEffect(() => {
     const cy = cytoscape({
@@ -43,11 +47,22 @@ const GraphScene = ({ elements, layout }) => {
     }
 
     setCy(cy)
-  }, [elements])
+  }, [elements, layout])
 
+  const handleLayoutOnSelect = (event) => {
+    const { value } = event.target
+    const layout = getLayout(value)
+    if (layout) {
+      console.log("yete")
+      setLayout(layout)
+    }
+  }
 
   return (
-    <div ref={containerRef} id="cy" />
+    <div>
+      <div ref={containerRef} id="cy" />
+      <LayoutList handleOnSelect={handleLayoutOnSelect} />
+    </div>
   )
 }
 

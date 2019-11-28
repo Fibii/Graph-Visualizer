@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import GraphScene from './graphScene'
 import NodeForm from './nodeForm'
 import getNodesToAddList from '../utils/input'
-import LayoutList from './layoutList'
-import getLayout from '../utils/graphLayouts'
 
 const intialNodes = [
   {
@@ -22,7 +20,6 @@ const intialNodes = [
 const Graph = () => {
   const [elements, setElements] = useState(intialNodes)
   const [withWeights, setWithWeights] = useState(false)
-  const [layout, setLayout] = useState(null)
 
   const addNodes = (content) => {
     const nodesToAdd = getNodesToAddList(content, withWeights)
@@ -43,18 +40,9 @@ const Graph = () => {
   const handleClearButton = () => setElements([])
   const handleWithWeights = () => setWithWeights(!withWeights)
 
-  const handleLayoutOnSelect = (event) => {
-    const { value } = event.target
-    const layout = getLayout(value)
-    if (layout) {
-      setLayout(layout)
-    }
-    setElements(elements.concat([]))
-  }
-
   return (
     <div className="mainContainer">
-      <GraphScene elements={elements} layout={layout} className="item" />
+      <GraphScene elements={elements} className="item" />
       <div className="container">
 
         <NodeForm
@@ -63,8 +51,6 @@ const Graph = () => {
           handleWithWeights={handleWithWeights}
           className="item"
         />
-        <LayoutList handleOnSelect={handleLayoutOnSelect} />
-
 
       </div>
     </div>

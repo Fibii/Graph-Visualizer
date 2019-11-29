@@ -20,6 +20,7 @@ describe('input parsing functions', () => {
 
   test('wrong input cannot be parsed', () => {
     expect(isInputParsable(' ')).toBe(false)
+    expect(isInputParsable('A')).toBe(false)
     expect(isInputParsable('A B C', true)).toBe(false)
     expect(isInputParsable('A B 5\nA C D', true)).toBe(false)
   })

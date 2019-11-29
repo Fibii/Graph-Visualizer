@@ -21,7 +21,7 @@ export const isInputParsable = (lines, withWeights = false) => {
     }
 
 
-    if (splitedLine[0].length < 1 || splitedLine[1].length < 1) {
+    if (splitedLine[0].length < 1 || splitedLine[1] === undefined || splitedLine[1].length < 1) {
       parsable = false
     }
 

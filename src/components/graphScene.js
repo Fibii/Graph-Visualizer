@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import cytoscape from 'cytoscape'
+import dagre from 'cytoscape-dagre'
 import GraphOptions from './graphOptions'
 import getLayout from '../utils/graphLayouts'
-import dagre from 'cytoscape-dagre' 
 
 const ZOOM_FACTOR = 0.1
 
@@ -11,10 +11,29 @@ const GraphScene = ({ elements }) => {
   const [cy, setCy] = useState(null)
   const [layout, setLayout] = useState(null)
   const [zoom, setZoom] = useState({})
+  const [isDirect, setIsDirect] = useState(false)
 
   useEffect(() => {
-    
     cytoscape.use(dagre)
+    console.log('rendered')
+    let style = {
+      content: 'data(weight)',
+      width: 3,
+      'line-color': 'rgb(220, 183, 253)',
+      'target-arrow-color': 'rgb(125, 54, 187)',
+      'target-arrow-shape': 'triangle',
+    }
+
+    if (isDirect) {
+      console.log('we here')
+      style = {
+        ...style,
+        'curve-style': 'bezier',
+      }
+    }
+
+    console.log(style)
+
     const cy = cytoscape({
       container: containerRef.current, // container to render in
       elements,
@@ -23,20 +42,14 @@ const GraphScene = ({ elements }) => {
         {
           selector: 'node',
           style: {
-            'background-color': '#666',
+            'background-color': 'rgb(125, 54, 187)',
             label: 'data(id)',
           },
         },
 
         {
           selector: 'edge',
-          style: {
-            content: 'data(weight)',
-            width: 3,
-            'line-color': '#ccc',
-            'target-arrow-color': '#ccc',
-            'target-arrow-shape': 'triangle',
-          },
+          style,
         },
       ],
 
@@ -51,15 +64,14 @@ const GraphScene = ({ elements }) => {
       cy.layout(layout).run()
     }
 
-    console.log(zoom)
     if (zoom.level) {
       cy.zoom(zoom)
     }
 
     setCy(cy)
-  }, [elements, layout, zoom])
+  }, [elements, layout, zoom, isDirect])
 
-  const handleLayoutOnSelect = (event) => {
+  const handleOnSelectLayout = (event) => {
     const { value } = event.target
     const layout = getLayout(value)
     if (layout) {
@@ -79,12 +91,23 @@ const GraphScene = ({ elements }) => {
     })
   }
 
+  const handleOnSelectGraphType = (event) => {
+    const { value } = event.target
+    if (value === 'directed') {
+      setIsDirect(true)
+      console.log('yeet')
+    } else {
+      setIsDirect(false)
+    }
+  }
+
   return (
     <div id="graphScene">
       <GraphOptions
-        handleOnSelect={handleLayoutOnSelect}
+        handleOnSelectLayout={handleOnSelectLayout}
         handleZoomMinus={handleZoomMinus}
         handleZoomPlus={handleZoomPlus}
+        handleOnSelectGraphType={handleOnSelectGraphType}
       />
 
       <div ref={containerRef} id="cy" />

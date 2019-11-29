@@ -11,24 +11,26 @@ body {
     width: 500px;
     /* background-color: yellow; kept as reference */
     border: 4px solid rgb(125, 54, 187);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-#graphOptionsContainer > select {
-    margin: 0px 242px 0px 12px;
+#selects > select {
     height: 42px;
     top:0;
     color: rgb(125, 54, 187);
+    margin-right: 4px;
 }
 
-#graphOptionsContainer > select > option {
-    margin-right: 14px;
+#selects > span {
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
-#graphOptionsContainer > button {
+#zoomButtons > button {
     height: 42px;
     width: 42px;
-    margin-top: 0px;
-    margin-bottom: 0px;
     color: rgb(125, 54, 187);
 }
 

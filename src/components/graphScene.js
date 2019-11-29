@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import cytoscape from 'cytoscape'
 import GraphOptions from './graphOptions'
 import getLayout from '../utils/graphLayouts'
+import dagre from 'cytoscape-dagre' 
 
 const ZOOM_FACTOR = 0.1
 
@@ -12,6 +13,8 @@ const GraphScene = ({ elements }) => {
   const [zoom, setZoom] = useState({})
 
   useEffect(() => {
+    
+    cytoscape.use(dagre)
     const cy = cytoscape({
       container: containerRef.current, // container to render in
       elements,

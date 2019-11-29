@@ -10,6 +10,7 @@ const GraphOptions = ({ handleOnSelect, handleZoomPlus, handleZoomMinus }) => (
       <option value="circle">Circle</option>
       <option value="concentric">Concentric</option>
       <option value="cose">Cose</option>
+      <option value="dagre">Tree</option>
     </select>
     <button type="button" onClick={handleZoomPlus}>+</button>
     <button type="button" onClick={handleZoomMinus}>-</button>

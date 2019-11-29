@@ -1,13 +1,15 @@
 import React, { useEffect, useRef, useState } from 'react'
 import cytoscape from 'cytoscape'
-import LayoutList from './layoutList'
+import GraphOptions from './graphOptions'
 import getLayout from '../utils/graphLayouts'
 
+const ZOOM_FACTOR = 0.1
 
 const GraphScene = ({ elements }) => {
   const containerRef = useRef(null)
   const [cy, setCy] = useState(null)
   const [layout, setLayout] = useState(null)
+  const [zoom, setZoom] = useState({})
 
   useEffect(() => {
     const cy = cytoscape({
@@ -46,22 +48,42 @@ const GraphScene = ({ elements }) => {
       cy.layout(layout).run()
     }
 
+    console.log(zoom)
+    if (zoom.level) {
+      cy.zoom(zoom)
+    }
+
     setCy(cy)
-  }, [elements, layout])
+  }, [elements, layout, zoom])
 
   const handleLayoutOnSelect = (event) => {
     const { value } = event.target
     const layout = getLayout(value)
     if (layout) {
-      console.log("yete")
       setLayout(layout)
     }
+  }
+
+  const handleZoomPlus = () => {
+    setZoom({
+      level: cy.zoom() + ZOOM_FACTOR,
+    })
+  }
+
+  const handleZoomMinus = () => {
+    setZoom({
+      level: cy.zoom() - ZOOM_FACTOR,
+    })
   }
 
   return (
     <div>
       <div ref={containerRef} id="cy" />
-      <LayoutList handleOnSelect={handleLayoutOnSelect} />
+      <GraphOptions
+        handleOnSelect={handleLayoutOnSelect}
+        handleZoomMinus={handleZoomMinus}
+        handleZoomPlus={handleZoomPlus}
+      />
     </div>
   )
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const LayoutList = ({ handleOnSelect }) => (
+const GraphOptions = ({ handleOnSelect, handleZoomPlus, handleZoomMinus }) => (
   <div>
     layout
     <select onChange={handleOnSelect}>
@@ -11,8 +11,9 @@ const LayoutList = ({ handleOnSelect }) => (
       <option value="concentric">Concentric</option>
       <option value="cose">Cose</option>
     </select>
-
+    <button type="button" onClick={handleZoomPlus}>+</button>
+    <button type="button" onClick={handleZoomMinus}>-</button>
   </div>
 )
 
-export default LayoutList
+export default GraphOptions

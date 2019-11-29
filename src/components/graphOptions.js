@@ -1,7 +1,7 @@
 import React from 'react'
 
 const GraphOptions = ({ handleOnSelect, handleZoomPlus, handleZoomMinus }) => (
-  <div>
+  <div id="graphOptionsContainer">
     layout
     <select onChange={handleOnSelect}>
       <option value="default">Default</option>

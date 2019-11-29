@@ -77,13 +77,14 @@ const GraphScene = ({ elements }) => {
   }
 
   return (
-    <div>
-      <div ref={containerRef} id="cy" />
+    <div id="graphScene">
       <GraphOptions
         handleOnSelect={handleLayoutOnSelect}
         handleZoomMinus={handleZoomMinus}
         handleZoomPlus={handleZoomPlus}
       />
+
+      <div ref={containerRef} id="cy" />
     </div>
   )
 }

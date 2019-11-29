@@ -2,7 +2,7 @@ import React from 'react'
 
 
 const NodeForm = ({ handleAddNewNode, handleClearButton, handleWithWeights }) => (
-  <div className="itemContainer">
+  <div id="nodeFormContainer">
     <form onSubmit={handleAddNewNode}>
       <textarea name="nodes" className="item" id="textArea" rows="16" />
 

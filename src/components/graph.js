@@ -41,18 +41,14 @@ const Graph = () => {
   const handleWithWeights = () => setWithWeights(!withWeights)
 
   return (
-    <div className="mainContainer">
-      <GraphScene elements={elements} className="item" />
-      <div className="container">
-
-        <NodeForm
-          handleAddNewNode={handleAddNewNode}
-          handleClearButton={handleClearButton}
-          handleWithWeights={handleWithWeights}
-          className="item"
-        />
-
-      </div>
+    <div className="container">
+      <GraphScene elements={elements} id="graphScene" />
+      <NodeForm
+        handleAddNewNode={handleAddNewNode}
+        handleClearButton={handleClearButton}
+        handleWithWeights={handleWithWeights}
+        id="nodeForm"
+      />
     </div>
   )
 }

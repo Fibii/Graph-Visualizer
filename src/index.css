@@ -3,57 +3,44 @@ html {
 }
 body {
     font-size: 18px;
-    padding-left: 20%;
-    background-color:#ccc;
+    background-color:rgb(220, 183, 253);
+    color: rgb(125, 54, 187);
 }
 
-.mainContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    width: 100%;
-    height:100%;
-
-}
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
+#graphOptionsContainer {
+    width: 500px;
+    /* background-color: yellow; kept as reference */
+    border: 4px solid rgb(125, 54, 187);
 }
 
-.container  > select {
-    height: 80px;
+#graphOptionsContainer > select {
+    margin: 0px 242px 0px 12px;
+    height: 42px;
+    top:0;
+    color: rgb(125, 54, 187);
 }
 
-.itemContainer {
-    background-color:rgb(108, 65, 158);
+#graphOptionsContainer > select > option {
+    margin-right: 14px;
+}
+
+#graphOptionsContainer > button {
+    height: 42px;
+    width: 42px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    color: rgb(125, 54, 187);
+}
+
+#graphScene {
+    margin-right: 42px;
+    /* background-color: red;  kept as reference */
+}
+
+#nodeFormContainer{
     right: 0;
-    width: 30%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    padding: 40px 0 0 40px;
-}
-
-.item {
-    margin: 8px 8px 8px 0;
-    width: 100px;
-    height: 40px;
-    font-size: 16px;
-}
-
-#textArea {
-    width: 90%;
-    height: 100%;
-    font-size: 20px;
-    border: 5px solid #999;
-    border-radius: 5px;
-    box-shadow: 1px 1px 1px #999;
-}
-
-#inputItem {
-    font-size: 16px;
-    color:rgb(238, 238, 238);
+    width:30%;
+    background-color:rgb(173, 116, 226);
 }
 
 
@@ -62,12 +49,45 @@ body {
     height: 500px;
     top: 0px;
     left: 0px;
-    border: 5px solid #999;
-    border-radius: 5px;
+    border: 4px solid rgb(125, 54, 187);
+    border-radius: 4px;
     background-color:#fff;
-    margin: 40px 0 8px 0;
+    margin-top: 6px;
 }
 
-input {
-    padding-left: 500px;
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: right;
+    height: 90%;
+    width: 99%;
+    position: absolute;
+}
+
+#textArea {
+    width: 90%;
+    height: 100%;
+    font-size: 20px;
+    border: 4px solid rgb(125, 54, 187);
+    border-radius: 4px;
+    box-shadow: 1px 1px 1px rgb(125, 54, 187);
+    margin-left: 12px;
+    margin-top: 56px;
+}
+
+#inputItem {
+    font-size: 16px;
+    color: rgb(125, 54, 187);
+    margin-left: 12px;
+}
+
+.item {
+    margin: 8px 8px 8px 0;
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    margin-left: 12px;
+    color: rgb(125, 54, 187);
 }
